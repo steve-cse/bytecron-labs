@@ -1,0 +1,15 @@
+<!-- fragments/posts.html -->
+<div th:fragment="postList" xmlns:th="https://www.thymeleaf.org">
+    <div class="flex flex-col gap-4 text-white">
+        <div th:each="post : ${posts}" >
+
+            <h2  class="text-2xl font-bold mb-4 cursor-pointer"
+                th:text="${post.title}"
+                th:attr="hx-get='/post/' + ${post.slug}"
+                 th:href="@{'/post/' + ${post.slug}}"
+                hx-target="#container"
+                hx-push-url="true">Post Title</h2>
+            <p class="text-[#b2b2b2]" th:text="${post.excerpt}">Post summary..</p>
+        </div>
+    </div>
+</div>
