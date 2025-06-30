@@ -1,9 +1,22 @@
 <!-- fragments/posts.html -->
+<title>dglj</title>
 <div th:fragment="postContent" xmlns:th="https://www.thymeleaf.org">
 
-    <div class="post">
+    <div class="header">
+    <h1 th:text="${details.title}">Post Title</h1>
+    <div class="flex gap-1">
+    <p th:text="${details.date}">Post Date</p>
+        <span> &nbsp;&middot;&nbsp;</span>
+        <p th:text="${details.author}">Author Name</p>
+        </div>
+    </div>
+        <div class="post">
         <div th:utext="${post}">
             Rendering Post
         </div>
     </div>
+<!--    Render title for fragment-->
+    <script th:inline="javascript">
+        document.title = /*[[${details.title}]]*/ 'Post Title';
+    </script>
 </div>

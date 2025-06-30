@@ -1,19 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Blog Post</title>
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-    <link href="output.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/monokai.min.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title th:text="${details.title}">Post Page</title>
+    <link href="/style.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/hybrid.min.css">
 
-    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+          integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+            integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6"
+            crossorigin="anonymous"></script>
 </head>
-<!--<body class="bg-[#121517] text-white px-[140px] py-12" th:utext="${post}">-->
 <body>
-<h1>This is</h1>
-<div th:utext="${post}">
+<header>
+    <nav>
+        <div class="flex justify-between py-[42px] px-[140px]">
+            <p class="text-[#db0042] font-bold text-xl">The Cronicle</p>
+            <div class="flex gap-4">
+                <p class="text-white">Github</p>
+                <p class="text-white">Twitter</p>
+                <p class="text-white">LinkedIn</p>
+                <p class="text-white">Email</p>
+            </div>
+        </div>
+    </nav>
+</header>
 
+<!-- Main post content loaded directly -->
+<div id="post-wrapper" class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12">
+    <div th:replace="~{fragments/post :: postContent}"></div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(evt) {
+        // Highlight.js
+        if (window.hljs && !document.querySelector('[data-highlighted="yes"]')) {
+            hljs.highlightAll();
+        }
+
+        // KaTeX rendering
+        const mathElems = document.querySelectorAll(".katex");
+        mathElems.forEach(elem => {
+            if (elem.querySelector(".katex-mathml, .katex-html")) return;
+            katex.render(elem.textContent, elem, {
+                throwOnError: false,
+                displayMode: elem.nodeName !== 'SPAN',
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
