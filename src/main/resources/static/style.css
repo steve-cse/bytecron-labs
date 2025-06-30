@@ -325,6 +325,7 @@
   color: var(--color-white);
 }
 .post p {
+  margin-bottom: calc(var(--spacing) * 5);
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
   --tw-font-weight: var(--font-weight-medium);
@@ -337,6 +338,9 @@
   display: block;
   height: auto;
   max-width: 100%;
+}
+.katex {
+  color: var(--color-white);
 }
 @property --tw-font-weight {
   syntax: "*";

@@ -1,59 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-    <meta http-equiv="X-UA-Compatible" content="ie`=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie`=edge"/>
 
     <meta name="htmx-config" content='{"historyCacheSize": 0}'>
 
 
-
     <title>Hello, HTMX</title>
-    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js" integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+            integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+            crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet">
 
 
-<!--    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/monokai.min.css">
     <script>hljs.highlightAll();</script>
 
 
-  </head>
-  <body  >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+          integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
 
-    <header class="">
-      <nav class="">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+            integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6"
+            crossorigin="anonymous"></script>
+
+<!--    &lt;!&ndash; To automatically render math in text elements, include the auto-render extension: &ndash;&gt;-->
+<!--    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"-->
+<!--            integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"-->
+<!--            onload="renderMathInElement(document.body);"></script>-->
+
+
+</head>
+<body>
+
+<header class="">
+    <nav class="">
         <div class="flex justify-between py-[42px] px-[140px]">
-          <p class="text-[#db0042] font-bold text-xl">The Cronicle</p>
-          <div class="flex gap-4">
-            <p class="text-white">Github</p>
-            <p class="text-white">Twitter</p>
-            <p class="text-white">LinkedIn</p>
-            <p class="text-white">Email</p>
-          </div>
+            <p class="text-[#db0042] font-bold text-xl">The Cronicle</p>
+            <div class="flex gap-4">
+                <p class="text-white">Github</p>
+                <p class="text-white">Twitter</p>
+                <p class="text-white">LinkedIn</p>
+                <p class="text-white">Email</p>
+            </div>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <div id="container"
-         hx-get="/posts"
-         hx-trigger="load"
-         hx-swap="innerHTML"
-         class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12"
-    >
-    </div>
+<div id="container"
+     hx-get="/posts"
+     hx-trigger="load"
+     hx-swap="innerHTML"
+     class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12"
+>
+</div>
 
-  </body>
-  <script>
+</body>
+<script>
     document.body.addEventListener('htmx:afterSettle', function(evt) {
-      if (window.hljs) {
+      // Highlight.js
+      if (window.hljs && !document.querySelector('[data-highlighted="yes"]')) {
         hljs.highlightAll();
       }
+
+      // KaTeX rendering
+      const mathElems = document.querySelectorAll(".katex");
+      mathElems.forEach(elem => {
+        // Prevent re-rendering if already rendered (e.g., has .katex-mathml or .katex-html)
+        if (elem.querySelector(".katex-mathml, .katex-html")) return;
+
+        // Render math
+        katex.render(elem.textContent, elem, {
+          throwOnError: false,
+          displayMode: elem.nodeName !== 'SPAN',
+        });
+      });
     });
-  </script>
+</script>
+
+
 </html>

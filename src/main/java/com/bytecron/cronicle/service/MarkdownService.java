@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+
 public class MarkdownService {
     private final Parser parser;
     private final HtmlRenderer renderer;
 
     public MarkdownService() {
         MutableDataSet options = new MutableDataSet();
-        options.set(Parser.EXTENSIONS, List.of(YamlFrontMatterExtension.create()));
-
+        options.set(Parser.EXTENSIONS, List.of(YamlFrontMatterExtension.create(), GitLabExtension.create()));
         this.parser = Parser.builder(options).build();
         this.renderer = HtmlRenderer.builder(options).build();
     }

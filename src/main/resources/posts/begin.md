@@ -77,3 +77,11 @@ The code for the algorithm can be written as follows:
 **Space Complexity:** $O(1)$ – Using a couple of variables i.e., constant space.
 
 *Image courtesy of [Wikipedia](https://en.wikipedia.org/wiki/Euclid)*
+
+
+```math
+a^2+b^2=c^2
+```
+```math
+a^2+b^2=c^2
+```
