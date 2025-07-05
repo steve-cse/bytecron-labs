@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --default-font-family: "Benton Sans", "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#121517];
+  }
+
+  a {
+    color: #999999;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  ul {
+    @apply list-disc pl-6 text-white;
+  }
+
+  ol {
+    @apply list-decimal pl-6 text-white;
+  }
+
+  li {
+    @apply text-white;
+  }
+}
+
+.post h1 {
+  @apply text-white text-3xl font-bold;
+}
+
+.post h2 {
+  @apply text-white text-2xl font-bold mt-8 mb-6;
+}
+
+.post h3 {
+  @apply text-white text-xl font-semibold mt-6 mb-4;
+}
+
+.post h4 {
+  @apply text-white text-lg font-semibold mt-6 mb-4;
+}
+
+.post p {
+  @apply font-medium text-white text-lg mb-5;
+}
+
+.post img {
+  @apply block mx-auto max-w-full h-auto my-4;
+}
+
+.post hr {
+  @apply text-white;
+}
+
+.katex {
+  @apply text-white;
+}
+
+.header h1 {
+  @apply text-white text-4xl font-bold mb-0.5;
+}
+
+.header p {
+  @apply text-[#b2b2b2] text-sm mb-5;
+}
+
+.header span {
+  @apply text-[#b2b2b2];
+}

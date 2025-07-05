@@ -12,7 +12,9 @@ slug: in-the-beginning
 The algorithm states that the greatest common divisor (GCD) of two numbers can be derived using the following identity:
 
 ```math
-\gcd(n_1, n_2) = \gcd(n_1 - n_2, n_2) \quad \text{where } n_1 > n_2
+\gcd(n_1, n_2) = \gcd(n_1 - n_2, n_2) \\
+
+\text{where } n_1 > n_2
 ```
 
 The difference is always divisible by the GCD, i.e.,
@@ -51,7 +53,7 @@ The difference is always divisible by the GCD, i.e.,
 Instead of repeated subtraction, we can use the modulus operator:
 
 ```math
-\gcd(7, 2) = \gcd(7 \bmod 2, 2) = \gcd(1, 2)
+\gcd(7 \bmod 2, 2) = \gcd(1, 2)
 ```
 
 
