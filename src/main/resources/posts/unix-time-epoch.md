@@ -1,7 +1,7 @@
 ---
 title: Unix Time Epoch
 date: March 26 2025
-excerpt: The Unix epoch, starting at January 1, 1970, is a key reference point in computing time. However, 32-bit systems face a critical overflow issue by January 19, 2038—known as the Y2K38 problem. This article explores the origins of the epoch, the risks posed by time overflow, and how transitioning to 64-bit time representation ensures time continues ticking well into the distant future.
+excerpt: The Unix epoch, starting at January 1, 1970, is a key reference point in computing time. However, 32-bit systems face a critical overflow issue by January 19, 2038—known as the Y2K38 problem.
 author: Steve Boby George
 ---
 The Unix epoch is a reference point in time commonly used in computing systems. Historically unix system time is recognized as **00:00:00 GMT, January 1, 1970** but GMT (Greenwich Mean Time) is not recognized by the international standards community. And thus epoch is used to reference to the actual standard i.e. Coordinated Universal Time. Many operating systems and programming languages measure time as the number of seconds that have passed since this epoch. So the question arises when does time stop due to eventual memory consumption? 
