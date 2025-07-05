@@ -1,7 +1,7 @@
 ---
 title: Euclidean Algorithm
 date: March 15 2025
-excerpt: A fundamental method for computing the greatest common divisor (GCD) of two integers. Starting from the principle of repeated subtraction and moving toward an optimized version using the modulus operator, the post provides both mathematical insight and practical implementation in Java. It also includes a complexity analysis that highlights the algorithm’s efficiency in terms of time and space.
+excerpt: A fundamental method for computing the greatest common divisor (GCD) of two integers. Starting from the principle of repeated subtraction and moving toward an optimized version using the modulus operator.
 author: Steve Boby George
 slug: in-the-beginning
 ---

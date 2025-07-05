@@ -7,9 +7,6 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie`=edge" />
-
-    <meta name="htmx-config" content='{"historyCacheSize": 0}' />
-
     <title>The Cronicle</title>
     <link rel="apple-touch-icon" sizes="180x180" href="https://cronicle.bytecron.me/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cronicle.bytecron.me/favicon-32x32.png">
@@ -18,7 +15,6 @@
 
     <link href="style.css" rel="stylesheet" />
     <script
-
             src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
             integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
             crossorigin="anonymous"
@@ -136,6 +132,8 @@
         id="container"
         hx-get="/posts"
         hx-trigger="load"
+        hx-history-elt
+        hx-history="restore"
         class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 py-8 sm:py-12"
 ></div>
 </body>
