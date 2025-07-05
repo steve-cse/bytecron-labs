@@ -31,7 +31,7 @@ public class CronicleService {
     public List<Post> getPosts() throws IOException {
         return loadAllPosts();
     }
-
+    @Cacheable(value="renderedPosts", key = "#slug")
     public  String getPost(String slug) throws IOException {
         String path = "classpath:posts/" + slug + ".md";
         Resource resource = resourceLoader.getResource(path);
@@ -42,7 +42,7 @@ public class CronicleService {
 
     @Cacheable("postDetails")
     public Post getPostDetails(String slug) throws IOException {
-        List<Post> posts = loadAllPosts();
+        List<Post> posts = getPosts();
         return posts.stream()
                 .filter(post -> post.getSlug().equals(slug))
                 .findFirst()
