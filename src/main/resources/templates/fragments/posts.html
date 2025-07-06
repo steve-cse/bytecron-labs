@@ -2,13 +2,13 @@
 <div th:fragment="postList" xmlns:th="https://www.thymeleaf.org">
     <div class="flex flex-col gap-4 text-white">
         <div class="mb-2" th:each="post : ${posts}">
-            <h2 class="text-2xl font-bold mb-4 cursor-pointer hover:text-[#db0042] active:text-[#db0042]"
-                th:text="${post.title}"
-                th:attr="hx-get='/partial/post/' + ${post.slug}, hx-push-url='/post/' + ${post.slug}"
-                th:href="@{'/post/' + ${post.slug}}"
-                hx-target="#container">
+            <a
+                    class="block text-2xl font-bold mb-4 cursor-pointer hover:text-[#db0042] active:text-[#db0042] text-inherit"
+                    th:text="${post.title}"
+                    th:href="@{'/post/' + ${post.slug}}"
+            >
                 Post Title
-            </h2>
+            </a>
             <p class="text-[#b2b2b2]" th:text="${post.excerpt}">
                 Post Excerpt
             </p>
