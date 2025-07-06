@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bytecron</groupId>
-    <artifactId>cronicle</artifactId>
+    <artifactId>bytecron-labs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cronicle</name>
+    <name>bytecron</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>

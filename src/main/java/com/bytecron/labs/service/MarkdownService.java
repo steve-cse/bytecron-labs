@@ -1,4 +1,4 @@
-package com.bytecron.cronicle.service;
+package com.bytecron.labs.service;
 
 import com.vladsch.flexmark.ext.gitlab.GitLabExtension;
 import com.vladsch.flexmark.ext.yaml.front.matter.AbstractYamlFrontMatterVisitor;

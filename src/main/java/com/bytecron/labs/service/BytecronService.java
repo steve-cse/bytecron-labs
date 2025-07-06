@@ -1,9 +1,8 @@
-package com.bytecron.cronicle.service;
+package com.bytecron.labs.service;
 
 
-import com.bytecron.cronicle.modal.Post;
+import com.bytecron.labs.modal.Post;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.Resource;
@@ -22,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class CronicleService {
+public class BytecronService {
     private final ResourcePatternResolver resourcePatternResolver;
     private final MarkdownService markDownService;
     private final ResourceLoader resourceLoader;
@@ -31,6 +30,7 @@ public class CronicleService {
     public List<Post> getPosts() throws IOException {
         return loadAllPosts();
     }
+
     @Cacheable(value="renderedPosts", key = "#slug")
     public  String getPost(String slug) throws IOException {
         String path = "classpath:posts/" + slug + ".md";

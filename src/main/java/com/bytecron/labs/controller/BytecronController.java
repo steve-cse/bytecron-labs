@@ -1,7 +1,7 @@
-package com.bytecron.cronicle.controller;
+package com.bytecron.labs.controller;
 
-import com.bytecron.cronicle.modal.Post;
-import com.bytecron.cronicle.service.CronicleService;
+import com.bytecron.labs.modal.Post;
+import com.bytecron.labs.service.BytecronService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +16,8 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class CronicleController {
-    private final CronicleService cronicleService;
+public class BytecronController {
+    private final BytecronService bytecronService;
 
     @GetMapping("/")
     public String index() {
@@ -28,7 +28,7 @@ public class CronicleController {
     public String getPosts(Model model) {
         List<Post> posts = null;
         try {
-            posts = cronicleService.getPosts();
+            posts = bytecronService.getPosts();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -41,8 +41,8 @@ public class CronicleController {
         String postContent = null;
         Post postDetails = null;
         try {
-            postContent = cronicleService.getPost(slug);
-            postDetails = cronicleService.getPostDetails(slug);
+            postContent = bytecronService.getPost(slug);
+            postDetails = bytecronService.getPostDetails(slug);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -59,8 +59,8 @@ public class CronicleController {
         String postContent = null;
         Post postDetails = null;
         try {
-            postContent = cronicleService.getPost(slug);
-            postDetails = cronicleService.getPostDetails(slug);
+            postContent = bytecronService.getPost(slug);
+            postDetails = bytecronService.getPostDetails(slug);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

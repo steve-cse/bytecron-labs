@@ -1,10 +1,10 @@
-package com.bytecron.cronicle;
+package com.bytecron.labs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CronicleApplicationTests {
+class BytecronApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,9 +1,7 @@
-package com.bytecron.cronicle.modal;
+package com.bytecron.labs.modal;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Represents the metadata of a blog post.
