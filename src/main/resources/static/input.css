@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../templates");
+
 
 @theme {
   --default-font-family: "Benton Sans", "Inter", sans-serif;

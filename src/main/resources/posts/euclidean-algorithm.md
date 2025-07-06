@@ -3,7 +3,6 @@ title: Euclidean Algorithm
 date: March 15 2025
 excerpt: A fundamental method for computing the greatest common divisor (GCD) of two integers. Starting from the principle of repeated subtraction and moving toward an optimized version using the modulus operator.
 author: Steve Boby George
-slug: in-the-beginning
 ---
 
 ![The School of Athens](https://upload.wikimedia.org/wikipedia/commons/5/57/0_Chambre_de_Rapha%C3%ABl_-_%C3%89cole_d%27Ath%C3%A8nes_-_Mus%C3%A9es_du_Vatican.JPG)
@@ -90,6 +89,7 @@ class Solution {
   O(1)
   ```
 
-  Since only a couple of variables i.e., constant space.
+Since only a couple of variables i.e., constant space.
 
+*Image courtesy of [Wikipedia](https://en.wikipedia.org/wiki/Euclid)*
 

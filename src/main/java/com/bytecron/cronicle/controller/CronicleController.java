@@ -36,22 +36,6 @@ public class CronicleController {
         return "fragments/posts :: postList";
     }
 
-    @GetMapping("/partial/post/{slug}")
-    public String getPartialPost(@PathVariable String slug, HttpServletRequest request, Model model) {
-        String postContent = null;
-        Post postDetails = null;
-        try {
-            postContent = cronicleService.getPost(slug);
-            postDetails = cronicleService.getPostDetails(slug);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        model.addAttribute("details", postDetails);
-        model.addAttribute("post", postContent);
-        return "fragments/post :: postContent";
-    }
-
     @GetMapping("/post/{slug}")
     public String getFullPost(@PathVariable String slug, HttpServletRequest request, Model model) {
         String postContent = null;
@@ -67,6 +51,23 @@ public class CronicleController {
         model.addAttribute("post", postContent);
 
         return "post";
+    }
+
+    //TODO: Remove once layout and navigation are setup
+    @GetMapping("/partial/post/{slug}")
+    public String getPartialPost(@PathVariable String slug, HttpServletRequest request, Model model) {
+        String postContent = null;
+        Post postDetails = null;
+        try {
+            postContent = cronicleService.getPost(slug);
+            postDetails = cronicleService.getPostDetails(slug);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        model.addAttribute("details", postDetails);
+        model.addAttribute("post", postContent);
+        return "fragments/post :: postContent";
     }
 }
 
