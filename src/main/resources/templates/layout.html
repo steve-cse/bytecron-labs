@@ -184,11 +184,13 @@
 
 <!-- Initialization scripts -->
 <script>
-    document.body.addEventListener("htmx:afterSettle", function (evt) {
+    function initializePageContent() {
+      // Highlight.js
       if (window.hljs && !document.querySelector('[data-highlighted="yes"]')) {
         hljs.highlightAll();
       }
 
+      // KaTeX
       const mathElems = document.querySelectorAll(".katex");
       mathElems.forEach((elem) => {
         if (elem.querySelector(".katex-mathml, .katex-html")) return;
@@ -197,7 +199,13 @@
           displayMode: elem.nodeName !== "SPAN",
         });
       });
-    });
+    }
+
+    // Initial page load
+    document.addEventListener("DOMContentLoaded", initializePageContent);
+
+    // After HTMX updates
+    document.body.addEventListener("htmx:afterSettle", initializePageContent);
 </script>
 
 <!-- Page-specific scripts -->
