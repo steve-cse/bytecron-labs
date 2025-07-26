@@ -60,6 +60,11 @@
   @apply text-white;
 }
 
+.post pre {
+  @apply mb-5;
+}
+
+
 .katex {
   @apply text-white;
 }
