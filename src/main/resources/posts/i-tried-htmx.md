@@ -13,7 +13,7 @@ You might be wondering, why make a blog post on HTMX this year rather than last 
 ![horse](/images/i-tried-htmx/horse.jpg)
 
 
-At first it was quite weird to be honest to get around the mental model of HTMX but after working with it to render a few pages you get used to it pretty quickly, and the documentation for HTMX is excellent. So what's the mental model? Well instead of returning JSON to update the page you send the required HTML from the backend server, embracing it, and HTMX does its magic by swapping the response with the old elements in the DOM. 
+At first it was quite weird to be honest to get around the mental model of HTMX but after working with it to render a few pages you get used to it pretty quickly, and the documentation for HTMX is excellent. So what's the mental model? Well instead of returning JSON to update the page you send the required HTML from the backend server, embracing it, and HTMX does its magic by swapping the response, a partial view with the old elements in the DOM. 
 
 ```html
 <body>
@@ -34,13 +34,13 @@ Next, for the frontend experience, I want a library that displays math on the fr
 
 ## The Tailwind CSS Mistake
 
-Now here's where I started making mistakes. I started using tailwind for my styling, the Tailwind Play CDN to be specific. About 50% of my UI was done and then I read the fine print "The Play CDN is designed for development purposes only, and is not **intended for production**". So I switched over to using the [tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli) (I miss you npm) which has to be on during active development since it scans your HTML for styles and creates the corresponding output.css file—I learned that after 5 minutes from the installation when my styles weren't being applied. 
+Now here's where I started making mistakes. I started using tailwind for my styling, the Tailwind Play CDN to be specific. About 50% of my UI was done and then I read the fine print "The Play CDN is designed for development purposes only, and is not **intended for production**". So I switched over to using the [tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli) (I miss you npm) which has to be on during active development since it scans your HTML for styles and creates the corresponding `output.css` file—I learned that after 5 minutes from the installation when my styles weren't being applied. 
 
 ## Navigation Struggles
 
-Well now my CSS is sorted and now we can head on over to navigation. Whenever a user clicks on a new post he/she has to be routed to a new page with the posts content. After reading the HTMX documentation I thought lets use `hx-push-url` attribute which allows me to push a URL into the browser location history but here's the problem—it, on page reload only the partial post content is returned and the main layout of the page is not loaded as HTMX cache is cleared. 
+Well now my CSS is sorted and now we can head on over to navigation. Whenever a user clicks on a new post he/she has to be routed to a new page with the posts content. After reading the HTMX documentation I thought lets use `hx-push-url` attribute which allows me to push a URL into the browser location history but here's the problem—whenever the browsers forward and backward buttons are pressed it breaks the page and returns the partial view rather than the full one.
 
-Searching for a solution I landed on the official subreddit for HTMX where many comments wrote just check the response header on the backend and return the full or partial view based on it. This worked but whenever the browsers forward and backward buttons are pressed it breaks the page and returns the partial view rather than the full one. `hx-push-url` is good for custom AJAX interactions that should update the URL—an example for this could be a filtered search. For my use case `hx-boost` is the attribute to go for since when the server returns the HTML, HTMX intercepts and extracts just the required portion of the page. So `hx-boost` basically turned my `a` tags into AJAX requests thereby preventing reload while navigating. 
+Searching for a solution I landed on the official subreddit for HTMX where many comments wrote just check the response header on the backend and return the full or partial view based on it. This worked but on page reload only the partial post content was returned and the main layout of the page is not loaded as HTMX cache is cleared. `hx-push-url` is good for custom AJAX interactions that should update the URL—an example for this could be a filtered search. For my use case `hx-boost` is the attribute to go for since when the server returns the HTML, HTMX intercepts and extracts just the required portion of the page. So `hx-boost` basically turned my `<a>` tags into AJAX requests thereby preventing reload while navigating. 
 
 ## Mobile Responsiveness with Alpine.js
 
