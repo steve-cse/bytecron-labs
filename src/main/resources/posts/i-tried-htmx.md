@@ -1,5 +1,5 @@
 ---
-title: I tried HTMX
+title: I Tried HTMX
 date: July 26 2025
 excerpt: Read about my wholesome experience moving from Hugo to HTMX, complete with the mistakes I made and lessons learned along the way.
 author: Steve Boby George
