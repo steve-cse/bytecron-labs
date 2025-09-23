@@ -1,5 +1,5 @@
 ---
-title: Coolify Obsidian Sync Guide
+title: Obsidian Sync ft. Coolify
 date: September 23 2025
 excerpt: A practical guide to setting up Obsidian’s Self-hosted LiveSync plugin using Coolify. Starting with deploying CouchDB through Docker Compose, then configuring it securely for multi-device sync.
 author: Steve Boby George
