@@ -198,9 +198,6 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
-  .mt-11 {
-    margin-top: calc(var(--spacing) * 11);
-  }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
   }
@@ -219,18 +216,8 @@
   .hidden {
     display: none;
   }
-  .size-1 {
-    width: calc(var(--spacing) * 1);
-    height: calc(var(--spacing) * 1);
-  }
-  .h-2 {
-    height: calc(var(--spacing) * 2);
-  }
   .h-6 {
     height: calc(var(--spacing) * 6);
-  }
-  .h-8 {
-    height: calc(var(--spacing) * 8);
   }
   .min-h-\[50dvh\] {
     min-height: 50dvh;
@@ -238,14 +225,8 @@
   .min-h-screen {
     min-height: 100vh;
   }
-  .w-2 {
-    width: calc(var(--spacing) * 2);
-  }
   .w-6 {
     width: calc(var(--spacing) * 6);
-  }
-  .w-8 {
-    width: calc(var(--spacing) * 8);
   }
   .max-w-4xl {
     max-width: var(--container-4xl);
@@ -291,9 +272,6 @@
   }
   .py-11 {
     padding-block: calc(var(--spacing) * 11);
-  }
-  .pt-11 {
-    padding-top: calc(var(--spacing) * 11);
   }
   .pb-6 {
     padding-bottom: calc(var(--spacing) * 6);
@@ -403,11 +381,6 @@
   .lg\:px-10 {
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 10);
-    }
-  }
-  .\[\&_path\]\:fill-\[\#db0042\] {
-    & path {
-      fill: #db0042;
     }
   }
 }
